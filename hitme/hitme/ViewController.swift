@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+  
+    
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var label: UILabel!
@@ -25,6 +26,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scoreLabel.text="1"
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -33,6 +35,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func reset(_ sender: UIButton) {
+        scoreLabel.text="0"
+    }
+    @IBAction func information(_ sender: UIButton) {
+       
+    }
+    
 }
 
