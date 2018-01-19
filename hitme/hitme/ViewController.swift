@@ -12,14 +12,14 @@ class ViewController: UIViewController {
     
     var updatedScore : Int = 0
     var targetLabelNumber = Int(arc4random_uniform(100)+1)
-
+    
     @IBOutlet weak var targetLabel1: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var label: UILabel!
     @IBAction func slider(_ sender: UISlider) {
         label.text = String(Int(sender.value))
-    } // this is only here for testing, I will delete once I figure out how to do abs value
+    } // sets the position value of the slider equal to to label.text so it can be displayed only for us. This value is hidden from the user that's playing the game
     
     
     override func viewDidLoad() {
@@ -42,35 +42,37 @@ class ViewController: UIViewController {
         updateTargetText()
     }
     func updateTargetText() {
+        let sum = targetLabelNumber - (Int(sliderLabel.text!))!
+        
         if (sliderLabel.text == String(targetLabelNumber)) {
             updatedScore = updatedScore + 10
         }
         else {
-            if (targetLabelNumber-Int(sliderLabel.text!)!==1) {
+            if (abs(sum)==1) {
                 updatedScore = updatedScore + 9
             }
-            if (targetLabelNumber-Int(sliderLabel.text!)!==2) {
+            if (abs(sum)==2) {
                 updatedScore = updatedScore + 8
             }
-            if (targetLabelNumber-Int(sliderLabel.text!)!==3) {
+            if (abs(sum)==3) {
                 updatedScore = updatedScore + 7
             }
-            if (targetLabelNumber-Int(sliderLabel.text!)!==4) {
+            if (abs(sum)==4) {
                 updatedScore = updatedScore + 6
             }
-            if (targetLabelNumber-Int(sliderLabel.text!)!==5) {
+            if (abs(sum)==5) {
                 updatedScore = updatedScore + 5
             }
-            if (targetLabelNumber-Int(sliderLabel.text!)!==6) {
+            if (abs(sum)==6) {
                 updatedScore = updatedScore + 4
             }
-            if (targetLabelNumber-Int(sliderLabel.text!)!==7) {
+            if (abs(sum)==7) {
                 updatedScore = updatedScore + 3
             }
-            if (targetLabelNumber-Int(sliderLabel.text!)!==8) {
+            if (abs(sum)==8) {
                 updatedScore = updatedScore + 2
             }
-            if (targetLabelNumber-Int(sliderLabel.text!)!==9) {
+            if (abs(sum)==9) {
                 updatedScore = updatedScore + 1
             }
             else { updatedScore = updatedScore + 0}
