@@ -9,10 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    var scoreCount : Int = 1
+    var roundCount : Int = 1
     var updatedScore : Int = 0
     var targetLabelNumber = Int(arc4random_uniform(100)+1)
     
+    @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var targetLabel1: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var sliderLabel: UILabel!
@@ -36,12 +38,16 @@ class ViewController: UIViewController {
 
     @IBAction func reset(_ sender: UIButton) {
         scoreLabel.text="0"
+        roundLabel.text="1"
+        scoreCount = 1
+        roundCount = 1
     }
     
     @IBAction func hitMeButtonPressed(_ sender: UIButton) {
         updateTargetText()
     }
     func updateTargetText() {
+        scoreCount = scoreCount + 1
         let sum = targetLabelNumber - (Int(sliderLabel.text!))!
         
         if (sliderLabel.text == String(targetLabelNumber)) {
@@ -76,6 +82,13 @@ class ViewController: UIViewController {
                 updatedScore = updatedScore + 1
             }
             else { updatedScore = updatedScore + 0}
+        }
+        if (scoreCount==6) {
+            updatedScore = 0
+            scoreLabel.text = String(updatedScore)
+            roundCount = roundCount + 1
+            roundLabel.text = String(roundCount)
+            scoreCount = 1
         }
         scoreLabel.text = String(updatedScore)
         print(updatedScore)
