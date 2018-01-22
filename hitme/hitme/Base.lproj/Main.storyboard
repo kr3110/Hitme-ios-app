@@ -65,6 +65,8 @@
                                 <rect key="frame" x="105" y="96" width="462" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.28906481108060744" green="0.61556832901554404" blue="0.12165974479803228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="minimumTrackTintColor" red="0.0" green="1" blue="0.084724564651545542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="thumbTintColor" red="0.97857314348220825" green="0.066470585763454437" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="slider:" destination="BYZ-38-t0r" eventType="valueChanged" id="wxu-6L-x2r"/>
                                 </connections>
