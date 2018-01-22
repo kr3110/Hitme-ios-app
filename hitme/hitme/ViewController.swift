@@ -13,19 +13,21 @@ class ViewController: UIViewController {
     var roundCount : Int = 1
     var updatedScore : Int = 0
     var targetLabelNumber = Int(arc4random_uniform(100)+1)
+    var previousScore = 0
     
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var targetLabel1: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var label: UILabel!
+    
     @IBAction func slider(_ sender: UISlider) {
         label.text = String(Int(sender.value))
-    } // sets the position value of the slider equal to to label.text so it can be displayed only for us. This value is hidden from the user that's playing the game
-    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         targetLabel1.text = String(targetLabelNumber)
         scoreLabel.text="0"
         // Do any additional setup after loading the view, typically from a nib.
@@ -39,12 +41,35 @@ class ViewController: UIViewController {
     @IBAction func reset(_ sender: UIButton) {
         scoreLabel.text="0"
         roundLabel.text="1"
-        scoreCount = 1
+        scoreCount = 0
         roundCount = 1
     }
     
     @IBAction func hitMeButtonPressed(_ sender: UIButton) {
+        previousScore = updatedScore
         updateTargetText()
+        alertMessage()
+        targetLabelNumber = Int(arc4random_uniform(100)+1)
+        targetLabel1.text = String(targetLabelNumber)
+        roundLabel.text = String(Int(roundLabel.text!)!+1)
+    }
+    
+    func alertMessage(){
+        var title, message :String
+        if(label.text! == targetLabel1.text!){
+            title = "You got it"
+            message = "Your number was \(label.text!).\nYou scored 10 points"
+        } else if (previousScore == updatedScore){
+            title = "You got it too far... "
+            message = "Your number was \(label.text!). You scored \(abs(previousScore - updatedScore)) points "
+        } else{
+            title = "You almost had it"
+            message = "Your number was \(label.text!). You scored \(abs(previousScore - updatedScore)) points "
+        }
+        let alertController = UIAlertController(title: title, message:message, preferredStyle: UIAlertControllerStyle.alert);
+        alertController.addAction(UIAlertAction(title: "close", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     func updateTargetText() {
         scoreCount = scoreCount + 1
@@ -91,13 +116,8 @@ class ViewController: UIViewController {
             scoreCount = 1
         }
         scoreLabel.text = String(updatedScore)
-        print(updatedScore)
-        targetLabelNumber = Int(arc4random_uniform(100)+1)
-        targetLabel1.text = String(targetLabelNumber)
+        
     }
-    func information(_ sender: UIButton) {
-       
-    }
-    
+
 }
 
