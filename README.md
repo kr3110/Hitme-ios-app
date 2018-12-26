@@ -20,3 +20,6 @@ Kevin:
 # Visuals:
 ##### Main Screen
 ![Main Screen](https://github.com/kr3110/Hitme-ios-app/blob/master/hitme/img/Simulator%20Screen%20Shot%20-%20iPhone%207%20-%202018-12-25%20at%2021.15.39.png?raw=true)
+
+# Short Demo
+![] (https://thumbs.gfycat.com/KeyAgitatedBaiji-small.gif)
